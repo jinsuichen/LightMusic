@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "start electron": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "quick start": "npm run \"start webapp\" & npm run \"start electron\""
   },
   "keywords": [],
   "author": "jinsuichen",
