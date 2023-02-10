@@ -10,7 +10,21 @@ function createWindow () {
         }
     })
 
-    win.loadFile('index.html').then(_ => {})
+    // is development mode?
+    const isDev = !app.isPackaged;
+
+    // get distinct url according to distinct mode
+    // TODO: change url of production mode
+    const url = isDev ? 'http://localhost:5173' : `file://${path.join(__dirname, './build/index.html')}`;
+
+    // If it's at development mode, the console will be opened
+    if (isDev) {
+        win.webContents.openDevTools();
+    }
+
+    // Loading application
+    win.loadURL(url).then(_ => {});
+
 }
 
 app.whenReady().then(() => {
