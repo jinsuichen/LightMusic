@@ -1,4 +1,17 @@
+@use 'src/theme';
+
+$color1: map-get(theme.$current-theme, "color1");
+$color2: map-get(theme.$current-theme, "color2");
+$color3: map-get(theme.$current-theme, "color3");
+$color4: map-get(theme.$current-theme, "color4");
+$color5: map-get(theme.$current-theme, "color5");
+
 .App {
   height: 100%;
   width: 100%;
+
+  background-color: $color1;
+  border-radius: 20px;
+
 }
+

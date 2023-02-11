@@ -1,10 +1,13 @@
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 
 import './App.scss'
+import React from "react";
+import Header from "./components/Header/Header";
 
 const App = () => (
     <div className='App'>
-        <AudioPlayer/>
+        <Header />
+        <AudioPlayer />
     </div>
 )
 

@@ -21,3 +21,11 @@ $purple: (
         "color4": #763568, // IRIS COLOR
         "color5": #8D608C, // TATARIAN ASTER COLOR
 );
+
+$header-height: 10%;
+$content-height: 100% - $header-height;
+$current-theme: $green;
+
+//$danger-color: #ff4d4f;
+//$setting-color: #bec8c8;
+//$info-color: #2377ff;

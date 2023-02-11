@@ -1,27 +1,25 @@
-@use '../../theme';
-@use 'sass:math';
+@use 'src/theme';
 
-$height: 100%;
+$height: theme.$content-height;
 $width: 100%;
 
-$current-theme: theme.$green;
 
-$color1: map-get($current-theme, "color1");
-$color2: map-get($current-theme, "color2");
-$color3: map-get($current-theme, "color3");
-$color4: map-get($current-theme, "color4");
-$color5: map-get($current-theme, "color5");
+$color1: map-get(theme.$current-theme, "color1");
+$color2: map-get(theme.$current-theme, "color2");
+$color3: map-get(theme.$current-theme, "color3");
+$color4: map-get(theme.$current-theme, "color4");
+$color5: map-get(theme.$current-theme, "color5");
 
 .AudioPlayerContainer {
 
   height: $height;
   width: $width;
-  background-color: $color1;
+  //background-color: $color1;
 
   box-sizing: border-box;
-  padding: 50px 30px 30px;
+  padding: 0 30px 30px;
 
-  border-radius: 20px;
+  //border-radius: 20px;
   box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
 
 
@@ -30,6 +28,8 @@ $color5: map-get($current-theme, "color5");
     display: block;
     margin: auto;
     height: 45%;
+
+    border: 3px solid white;
   }
 
   .Caption {
