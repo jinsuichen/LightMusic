@@ -1,0 +1,13 @@
+@use '../../theme';
+
+$height: 100%;
+$width: 100%;
+
+
+$color1: map-get(theme.$green, "color1");
+
+.container {
+  height: $height;
+  width: $width;
+  background-color: $color1;
+}
