@@ -5,3 +5,8 @@ contextBridge.exposeInMainWorld('versions', {
     chrome: process.versions.chrome,
     electron: process.versions.electron,
 })
+
+contextBridge.exposeInMainWorld('header', {
+    exitProgram: () => ipcRenderer.invoke('exitProgram'),
+})
+

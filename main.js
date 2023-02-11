@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 
 function createWindow () {
@@ -27,6 +27,8 @@ function createWindow () {
 
     // Loading application
     win.loadURL(url).then(_ => {});
+
+    ipcMain.handle('exitProgram', () => win.close())
 
 }
 
