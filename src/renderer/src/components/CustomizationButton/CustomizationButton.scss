@@ -1,0 +1,41 @@
+.tinyButton {
+  -webkit-app-region: no-drag;
+  * {
+    -webkit-app-region: no-drag;
+  }
+
+  margin: 0 8px 0;
+
+  height: 15px !important;
+  width: 15px !important;
+  min-width: 15px !important;
+  min-height: 15px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+
+  border: 2px white solid !important;
+}
+
+.normalButton {
+  -webkit-app-region: no-drag;
+  * {
+    -webkit-app-region: no-drag;
+  }
+}
+
+.iconButton {
+  -webkit-app-region: no-drag;
+  * {
+    -webkit-app-region: no-drag;
+  }
+  svg {
+    height: 24px !important;
+    width: 24px !important;
+  }
+
+  height: 50px !important;
+  width: 50px !important;
+  padding: 13px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+}

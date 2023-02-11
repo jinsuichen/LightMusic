@@ -1,0 +1,46 @@
+$green: (
+  'color1': #8db255,
+  // YOUNG GREEN ONION
+  'color2': #5b8930,
+  // FRESH ONION
+  'color3': #407a52,
+  // PATINA
+  'color4': #7a942e,
+  // SISKIN SPROUT YELLOW
+  'color5': #6b9362,
+  // YOUNG BAMBOO COLOR
+);
+
+$pink: (
+  'color1': #f08f90,
+  // ONE KIN DYE
+  'color2': #f47983,
+  // PEACH-COLORED
+  'color3': #db5a6b,
+  // RED PLUM COLORED
+  'color4': #c93756,
+  // MEDIUM CRIMSON
+  'color5': #fcc9b9,
+  // CHERRY BLOSSOM COLOR
+);
+
+$purple: (
+  'color1': #875f9a,
+  // WISTERIA PURPLE
+  'color2': #5d3f6a,
+  // BELLFLOWER COLOR
+  'color3': #89729e,
+  // WISTERIA COLOR
+  'color4': #763568,
+  // IRIS COLOR
+  'color5': #8d608c,
+  // TATARIAN ASTER COLOR
+);
+
+$header-height: 10%;
+$content-height: 100% - $header-height;
+$current-theme: $green;
+
+//$danger-color: #ff4d4f;
+//$setting-color: #bec8c8;
+//$info-color: #2377ff;
