@@ -4,7 +4,9 @@ const path = require('path')
 function createWindow () {
     const win = new BrowserWindow({
         width: 350,
-        height: 400,
+        height: 430,
+        frame: false,
+        transparent: true,
         // webPreferences: {
         //     preload: path.join(__dirname, 'preload.js')
         // }
@@ -15,7 +17,7 @@ function createWindow () {
 
     // get distinct url according to distinct mode
     // TODO: change url of production mode
-    const url = isDev ? 'http://localhost:5174' : `file://${path.join(__dirname, './build/index.html')}`;
+    const url = isDev ? 'http://localhost:5173' : `file://${path.join(__dirname, './build/index.html')}`;
 
     // If it's at development mode, the console will be opened
     if (isDev) {
