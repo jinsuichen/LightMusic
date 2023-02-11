@@ -7,9 +7,9 @@ function createWindow () {
         height: 430,
         frame: false,
         transparent: true,
-        // webPreferences: {
-        //     preload: path.join(__dirname, 'preload.js')
-        // }
+        webPreferences: {
+            preload: path.join(__dirname, 'preload.js')
+        }
     })
 
     // is development mode?
