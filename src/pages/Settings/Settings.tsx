@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { List } from "antd";
 
-import CustomizationButton from "../CustomizationButton/CustomizationButton";
+import CustomizationButton from "../../components/CustomizationButton/CustomizationButton";
 
 import './Settings.scss'
 

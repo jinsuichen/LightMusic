@@ -3,7 +3,7 @@ import React from "react";
 import { CaretRightOutlined, FastBackwardOutlined, FastForwardOutlined} from '@ant-design/icons';
 
 
-import CustomizationButton from "../CustomizationButton/CustomizationButton";
+import CustomizationButton from "../../components/CustomizationButton/CustomizationButton";
 
 type Props = {
 

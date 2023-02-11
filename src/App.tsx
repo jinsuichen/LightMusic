@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from "./components/Header/Header";
-import Settings from "./components/Settings/Settings";
-import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
+import Settings from "./pages/Settings/Settings";
+import AudioPlayer from "./pages/AudioPlayer/AudioPlayer";
 
 import './App.scss'
 
