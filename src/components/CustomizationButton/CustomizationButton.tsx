@@ -4,7 +4,7 @@ import {Button, ConfigProvider} from "antd";
 import './CustomizationButton.scss'
 
 type Props = {
-    customizationType: 'tiny' | 'normal' | 'icon',
+    type: 'tiny' | 'normal' | 'icon',
     color?: string,
     shape?: "round" | "circle" | "default",
     size?: "small" | "middle" | "large",
@@ -26,12 +26,12 @@ class CustomizationButton extends Component<Props> {
         danger: false,
     }
     render() {
-        const {color, customizationType, icon, children, size, shape, danger, className} = this.props;
+        const {color, type, className} = this.props;
         return (
             <ConfigProvider theme={{ token: { colorPrimary: color} }}>
                 <Button
                     {...this.props}
-                    className={customizationType + 'Button ' + className}
+                    className={type + 'Button ' + className}
                     type="primary"
                 />
             </ConfigProvider>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, ConfigProvider, Divider, List} from "antd";
+import { List } from "antd";
 
 import CustomizationButton from "../CustomizationButton/CustomizationButton";
 
@@ -28,12 +28,12 @@ class Settings extends Component<Props, State> {
                     renderItem={(item) => (
                         <List.Item className={'ListItem'}>
                             <p className={'TextField'}>{item}</p>
-                            <CustomizationButton className={'InlineButton'} customizationType={'tiny'} danger ></CustomizationButton>
+                            <CustomizationButton className={'InlineButton'} type={'tiny'} danger ></CustomizationButton>
                             {/*<Button danger className={'InlineButton'} type="primary" size={'small'}>delete</Button>*/}
                         </List.Item>
                     )}
                 />
-                <CustomizationButton className={'AddButton'} color={'#407A52'} customizationType={"normal"} size={'middle'}>New</CustomizationButton>
+                <CustomizationButton className={'AddButton'} color={'#407A52'} type={"normal"} size={'middle'}>New</CustomizationButton>
             </div>
         );
     }

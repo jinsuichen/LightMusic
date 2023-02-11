@@ -18,7 +18,7 @@ function createMainWindow () {
 
     // get distinct url according to distinct mode
     // TODO: change url of production mode
-    const url = isDev ? 'http://localhost:5173' : `file://${path.join(__dirname, './build/index.html')}`;
+    const url = isDev ? 'http://localhost:5173/AudioPlayer' : `file://${path.join(__dirname, './build/index.html')}`;
 
     // Loading application
     win.loadURL(url).then(_ => {});
