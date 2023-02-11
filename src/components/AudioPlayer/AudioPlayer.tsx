@@ -1,9 +1,10 @@
 import './AudioPlayer.scss'
 import React from "react";
-
-import { ReactSVG } from "react-svg";
 import {Button, ConfigProvider} from "antd";
 import { CaretRightOutlined, FastBackwardOutlined, FastForwardOutlined} from '@ant-design/icons';
+
+
+import CustomizationButton from "../CustomizationButton/CustomizationButton";
 
 type Props = {
 
@@ -23,12 +24,9 @@ class AudioPlayer extends React.Component<Props, State> {
 
 
                 <div className={'Buttons'}>
-                    <ConfigProvider theme={{ token: { colorPrimary: '#407A52'} }}>
-                        <Button type="primary" shape="circle" size={'large'} icon={<FastBackwardOutlined />}  />
-                        <Button type="primary" shape="circle" size={'large'} icon={<CaretRightOutlined />}  />
-                        <Button type="primary" shape="circle" size={'large'} icon={<FastForwardOutlined />}  />
-                    </ConfigProvider>
-
+                    <CustomizationButton customizationType={'icon'} color={'#407A52'} shape={'circle'} icon={<FastBackwardOutlined />}/>
+                    <CustomizationButton customizationType={'icon'} color={'#407A52'} shape={'circle'} icon={<CaretRightOutlined />}/>
+                    <CustomizationButton customizationType={'icon'} color={'#407A52'} shape={'circle'} icon={<FastForwardOutlined />}/>
                 </div>
 
 

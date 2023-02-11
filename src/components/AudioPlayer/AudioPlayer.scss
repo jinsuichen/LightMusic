@@ -50,19 +50,6 @@ $color5: map-get(theme.$current-theme, "color5");
     align-items: start;
     justify-content: space-around;
 
-    button {
-
-      svg {
-        height: 24px !important;
-        width: 24px !important;
-      }
-
-      height: 50px !important;
-      width: 50px !important;
-      padding: 13px !important;
-      min-width: 0 !important;
-      min-height: 0 !important;
-    }
   }
 
   .Process {

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-
-import './Header.scss'
 import {Button, ConfigProvider} from 'antd';
+
+import CustomizationButton from "../CustomizationButton/CustomizationButton";
+import './Header.scss'
 
 class Header extends Component {
 
@@ -10,13 +11,8 @@ class Header extends Component {
 
         return (
             <div className={'Header'}>
-                <ConfigProvider theme={{ token: { colorPrimary: '#ff4d4f'} }}>
-                    <Button type="primary" shape="circle" onClick={exitProgram} />
-                </ConfigProvider>
-                <ConfigProvider theme={{ token: { colorPrimary: '#9B9B9B'} }}>
-                    <Button type="primary" shape="circle" />
-                </ConfigProvider>
-
+                <CustomizationButton color={'#ff4d4f'} customizationType={'tiny'} onClick={exitProgram}/>
+                <CustomizationButton color={'#9B9B9B'} customizationType={'tiny'}/>
             </div>
         );
     }

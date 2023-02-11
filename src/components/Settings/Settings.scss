@@ -1,0 +1,54 @@
+@use 'src/theme';
+
+$height: theme.$content-height;
+$width: 100%;
+
+
+.Settings {
+  height: $height;
+  width: $width;
+
+  box-sizing: border-box;
+  padding: 0 12px 0;
+
+  font-weight: 700;
+
+  > div {
+    * {
+      -webkit-app-region: no-drag;
+    }
+    //background-color: white;
+    border: 3.5px solid #407A52;
+    //border: none;
+    border-radius: 6px;
+  }
+
+  .ListItem {
+    display: flex;
+
+    .TextField {
+      overflow: hidden;
+    }
+  }
+
+  .ant-pagination-item {
+    background-color: #8DB255 !important;
+    border: 3px #407A52 solid !important;
+  }
+
+  .InlineButton {
+    //color: black;
+    //font-weight: 1000;
+    //font-size: 10px;
+  }
+
+  .AddButton {
+    -webkit-app-region: no-drag;
+     * {
+       -webkit-app-region: no-drag;
+     }
+
+    margin: 15px 10px 0 260px;
+  }
+
+}

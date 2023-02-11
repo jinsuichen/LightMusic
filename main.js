@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 
-function createWindow () {
+function createMainWindow () {
     const win = new BrowserWindow({
         width: 350,
         height: 430,
@@ -20,28 +20,25 @@ function createWindow () {
     // TODO: change url of production mode
     const url = isDev ? 'http://localhost:5173' : `file://${path.join(__dirname, './build/index.html')}`;
 
-    // If it's at development mode, the console will be opened
-    if (isDev) {
-        win.webContents.openDevTools();
-    }
-
     // Loading application
     win.loadURL(url).then(_ => {});
 
-    ipcMain.handle('exitProgram', () => win.close())
-
+    return win;
 }
 
 app.whenReady().then(() => {
-    createWindow()
+    const mainWindow = createMainWindow();
+    ipcMain.handle('exitProgram', () => mainWindow.close())
 
+    // for macOS
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
-            createWindow()
+            createMainWindow()
         }
     })
 })
 
+// for macOS
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit()
