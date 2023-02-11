@@ -68,9 +68,9 @@ $color5: map-get($current-theme, "color5");
       div svg {
         path {
           fill: $color2;
-          //stroke: $color2;
-          //stroke-width: 70;
-          //stroke-linecap: round;
+          stroke: $color2;
+          stroke-width: 20;
+          stroke-linecap: round;
         }
 
       }
