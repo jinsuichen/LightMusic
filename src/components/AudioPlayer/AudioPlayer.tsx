@@ -2,7 +2,8 @@ import './AudioPlayer.scss'
 import React from "react";
 
 import { ReactSVG } from "react-svg";
-
+import {Button, ConfigProvider} from "antd";
+import { CaretRightOutlined, FastBackwardOutlined, FastForwardOutlined} from '@ant-design/icons';
 
 type Props = {
 
@@ -22,15 +23,12 @@ class AudioPlayer extends React.Component<Props, State> {
 
 
                 <div className={'Buttons'}>
-                    <button>
-                        <ReactSVG src={"/src/assets/svg/left.svg"}/>
-                    </button>
-                    <button>
-                        <ReactSVG src={"/src/assets/svg/play.svg"}/>
-                    </button>
-                    <button>
-                        <ReactSVG src={"/src/assets/svg/right.svg"}/>
-                    </button>
+                    <ConfigProvider theme={{ token: { colorPrimary: '#407A52'} }}>
+                        <Button type="primary" shape="circle" size={'large'} icon={<FastBackwardOutlined />}  />
+                        <Button type="primary" shape="circle" size={'large'} icon={<CaretRightOutlined />}  />
+                        <Button type="primary" shape="circle" size={'large'} icon={<FastForwardOutlined />}  />
+                    </ConfigProvider>
+
                 </div>
 
 

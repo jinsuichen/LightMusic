@@ -42,7 +42,7 @@ $color5: map-get(theme.$current-theme, "color5");
 
   .Buttons {
     * {-webkit-app-region: no-drag;}
-    margin: 25px auto 25px;
+    margin: 25px auto 35px;
 
     display: flex;
     flex-direction: row;
@@ -52,31 +52,17 @@ $color5: map-get(theme.$current-theme, "color5");
 
     button {
 
-      display: block;
-      height: 20%;
-      width: 20%;
-
-      background: none;
-      border: none;
-      cursor: pointer;
-
-      div svg {
-        height: 100%;
-        width: 100%;
+      svg {
+        height: 24px !important;
+        width: 24px !important;
       }
 
-      div svg {
-        path {
-          fill: $color2;
-          stroke: $color2;
-          stroke-width: 20;
-          stroke-linecap: round;
-        }
-
-      }
+      height: 50px !important;
+      width: 50px !important;
+      padding: 13px !important;
+      min-width: 0 !important;
+      min-height: 0 !important;
     }
-    button:hover div svg path { fill: $color3; stroke: $color3; }
-    button:active div svg path { fill: $color5; stroke: $color5; }
   }
 
   .Process {
@@ -99,7 +85,7 @@ $color5: map-get(theme.$current-theme, "color5");
     height: 16px;
     width: 16px;
     border-radius: 50%;
-    background: $color5;
+    background: #407A52;
     border: none;
     cursor: pointer;
     box-shadow: 0 0 2px 0 #555;
