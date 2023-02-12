@@ -1,19 +1,19 @@
-import { Component } from 'react'
-import { ConfigProvider, List } from 'antd'
+import { Component } from 'react';
+import { ConfigProvider, List } from 'antd';
 
-import CustomizationButton from '../../components/CustomizationButton/CustomizationButton'
+import CustomizationButton from '../../components/CustomizationButton/CustomizationButton';
 
-import './Settings.scss'
+import './Settings.scss';
 
 type Props = {
-  pathList: Array<string>
-  handleDeletePath(path: string): void
-  handleNewPath(): void
-}
+  pathList: Array<string>;
+  handleDeletePath(path: string): void;
+  handleNewPath(): void;
+};
 
 class Settings extends Component<Props, Record<string, never>> {
   render(): JSX.Element {
-    const { pathList, handleDeletePath, handleNewPath } = this.props
+    const { pathList, handleDeletePath, handleNewPath } = this.props;
 
     return (
       <div className={'Settings'}>
@@ -23,7 +23,7 @@ class Settings extends Component<Props, Record<string, never>> {
             bordered
             pagination={{
               align: 'center',
-              pageSize: 6
+              pageSize: 6,
             }}
             dataSource={pathList}
             renderItem={(item): JSX.Element => (
@@ -50,8 +50,8 @@ class Settings extends Component<Props, Record<string, never>> {
           New
         </CustomizationButton>
       </div>
-    )
+    );
   }
 }
 
-export default Settings
+export default Settings;

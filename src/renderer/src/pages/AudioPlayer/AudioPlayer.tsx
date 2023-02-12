@@ -1,75 +1,75 @@
-import './AudioPlayer.scss'
-import React from 'react'
+import './AudioPlayer.scss';
+import React from 'react';
 import {
   CaretRightOutlined,
   FastBackwardOutlined,
   FastForwardOutlined,
-  PauseOutlined
-} from '@ant-design/icons'
+  PauseOutlined,
+} from '@ant-design/icons';
 
-import CustomizationButton from '../../components/CustomizationButton/CustomizationButton'
-import ArtWork from '../../assets/artwork/artwork.jpg'
+import CustomizationButton from '../../components/CustomizationButton/CustomizationButton';
+import ArtWork from '../../assets/artwork/artwork.jpg';
 
 type AudioInfo = {
-  path: string
-  name: string
-}
+  path: string;
+  name: string;
+};
 
 type Props = {
-  audioInfoList: Array<AudioInfo>
-}
+  audioInfoList: Array<AudioInfo>;
+};
 
 type State = {
-  currentAudioObj: HTMLAudioElement | null
-  isPlaying: boolean
-}
+  currentAudioObj: HTMLAudioElement | null;
+  isPlaying: boolean;
+};
 
 class AudioPlayer extends React.Component<Props, State> {
   state: State = {
     currentAudioObj: null,
-    isPlaying: false
-  }
+    isPlaying: false,
+  };
 
   // the left button
-  handleLastAudio = (): void => {}
+  handleLastAudio = (): void => {};
 
   // the right button
-  handleNextAudio = (): void => {}
+  handleNextAudio = (): void => {};
 
   // the middle button
   handleSwitch = (): void => {
-    const { currentAudioObj, isPlaying } = this.state
+    const { currentAudioObj, isPlaying } = this.state;
 
     if (currentAudioObj === null) {
       // if no audio is playing, randomly choose one to play
-      const { audioInfoList } = this.props
-      const randIndex: number = (Math.random() * audioInfoList.length) | 0
-      const item: AudioInfo = audioInfoList[randIndex]
+      const { audioInfoList } = this.props;
+      const randIndex: number = (Math.random() * audioInfoList.length) | 0;
+      const item: AudioInfo = audioInfoList[randIndex];
 
-      const audioObj: HTMLAudioElement = new Audio('file://' + item.path)
-      audioObj.play()
+      const audioObj: HTMLAudioElement = new Audio('file://' + item.path);
+      audioObj.play();
       this.setState({
         currentAudioObj: audioObj,
-        isPlaying: true
-      })
+        isPlaying: true,
+      });
     } else {
       // if once there was an audio file
       if (isPlaying) {
-        currentAudioObj.pause()
+        currentAudioObj.pause();
         this.setState({
-          isPlaying: false
-        })
+          isPlaying: false,
+        });
       } else {
-        currentAudioObj.play()
+        currentAudioObj.play();
         this.setState({
-          isPlaying: true
-        })
+          isPlaying: true,
+        });
       }
     }
-  }
+  };
 
   render(): JSX.Element {
-    const { currentAudioObj, isPlaying } = this.state
+    const { currentAudioObj, isPlaying } = this.state;
 
     return (
       <div className="AudioPlayerContainer">
@@ -100,8 +100,8 @@ class AudioPlayer extends React.Component<Props, State> {
 
         <input type="range" className={'Process'} />
       </div>
-    )
+    );
   }
 }
 
-export default AudioPlayer
+export default AudioPlayer;

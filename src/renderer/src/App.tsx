@@ -1,62 +1,62 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import Header from './components/Header/Header'
-import Settings from './pages/Settings/Settings'
-import AudioPlayer from './pages/AudioPlayer/AudioPlayer'
-const { api } = window
+import Header from './components/Header/Header';
+import Settings from './pages/Settings/Settings';
+import AudioPlayer from './pages/AudioPlayer/AudioPlayer';
+const { api } = window;
 
-import './App.scss'
+import './App.scss';
 
 type AudioInfo = {
-  path: string
-  name: string
-}
+  path: string;
+  name: string;
+};
 
 type State = {
-  pathList: Array<string>
-  audioInfoList: Array<AudioInfo>
-}
+  pathList: Array<string>;
+  audioInfoList: Array<AudioInfo>;
+};
 
 class App extends React.Component<Record<string, never>, State> {
   state: State = {
     pathList: [],
-    audioInfoList: []
-  }
+    audioInfoList: [],
+  };
   updatePathList = (): void => {
     api.getPath().then((result) => {
       this.setState({
-        pathList: result
-      })
-      this.updateAudioInfoList()
-    })
-  }
+        pathList: result,
+      });
+      this.updateAudioInfoList();
+    });
+  };
 
   handleNewPath = (): void => {
-    api.addPath()
-    this.updatePathList()
-  }
+    api.addPath();
+    this.updatePathList();
+  };
 
   handleDeletePath = (path: string): void => {
     api.deletePath(path).then(() => {
-      this.updatePathList()
-    })
-  }
+      this.updatePathList();
+    });
+  };
 
   updateAudioInfoList = (): void => {
     api.getAudioInfoList().then((result) => {
       this.setState({
-        audioInfoList: result
-      })
-    })
-  }
+        audioInfoList: result,
+      });
+    });
+  };
 
   componentDidMount(): void {
-    this.updatePathList()
+    this.updatePathList();
   }
 
   render(): JSX.Element {
-    const { pathList, audioInfoList } = this.state
+    const { pathList, audioInfoList } = this.state;
 
     return (
       <div className="App">
@@ -80,8 +80,8 @@ class App extends React.Component<Record<string, never>, State> {
           />
         </Routes>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
