@@ -2,44 +2,18 @@ import { Component } from 'react'
 import { ConfigProvider, List } from 'antd'
 
 import CustomizationButton from '../../components/CustomizationButton/CustomizationButton'
-const { api } = window
 
 import './Settings.scss'
 
-type State = {
+type Props = {
   pathList: Array<string>
+  handleDeletePath(path: string): void
+  handleNewPath(): void
 }
 
-class Settings extends Component<Record<string, never>, State> {
-  state: State = {
-    pathList: []
-  }
-
-  updatePathList = (): void => {
-    api.getPath().then((result) => {
-      this.setState({
-        pathList: result
-      })
-    })
-  }
-
-  handleNewPath = (): void => {
-    api.addPath()
-    this.updatePathList()
-  }
-
-  handleDeletePath = (path: string): void => {
-    api.deletePath(path).then(() => {
-      this.updatePathList()
-    })
-  }
-
-  componentDidMount(): void {
-    this.updatePathList()
-  }
-
+class Settings extends Component<Props, Record<string, never>> {
   render(): JSX.Element {
-    const { pathList } = this.state
+    const { pathList, handleDeletePath, handleNewPath } = this.props
 
     return (
       <div className={'Settings'}>
@@ -59,7 +33,7 @@ class Settings extends Component<Record<string, never>, State> {
                   className={'InlineButton'}
                   type={'tiny'}
                   danger
-                  onClick={(): void => this.handleDeletePath(item)}
+                  onClick={(): void => handleDeletePath(item)}
                 ></CustomizationButton>
                 {/*<Button danger className={'InlineButton'} type="primary" size={'small'}>delete</Button>*/}
               </List.Item>
@@ -71,7 +45,7 @@ class Settings extends Component<Record<string, never>, State> {
           color={'#407A52'}
           type={'normal'}
           size={'middle'}
-          onClick={this.handleNewPath}
+          onClick={handleNewPath}
         >
           New
         </CustomizationButton>
