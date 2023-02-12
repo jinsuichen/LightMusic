@@ -45,7 +45,6 @@ class App extends React.Component<Record<string, never>, State> {
 
   updateAudioInfoList = (): void => {
     api.getAudioInfoList().then((result) => {
-      console.log(result)
       this.setState({
         audioInfoList: result
       })
@@ -57,13 +56,18 @@ class App extends React.Component<Record<string, never>, State> {
   }
 
   render(): JSX.Element {
-    const { pathList } = this.state
+    const { pathList, audioInfoList } = this.state
 
     return (
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/AudioPlayer" element={<AudioPlayer />} index />
+          <Route path="/" element={<AudioPlayer audioInfoList={audioInfoList} />} />
+          <Route
+            path="/AudioPlayer"
+            element={<AudioPlayer audioInfoList={audioInfoList} />}
+            index
+          />
           <Route
             path="/Settings"
             element={
@@ -74,7 +78,6 @@ class App extends React.Component<Record<string, never>, State> {
               />
             }
           />
-          <Route path="/" element={<AudioPlayer />} />
         </Routes>
       </div>
     )

@@ -4,7 +4,6 @@ const { dialog } = require('electron')
 
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { addPath, getPath, deletePath, getAudioInfoList } from './path'
-// import icon from '../../resources/icon.png?asset'
 
 let mainWindow: BrowserWindow
 function createWindow(): BrowserWindow {
@@ -18,7 +17,8 @@ function createWindow(): BrowserWindow {
     // ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
+      sandbox: false,
+      webSecurity: false // For loading local audio sources
     }
   })
 
