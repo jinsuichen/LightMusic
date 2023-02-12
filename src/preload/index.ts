@@ -5,7 +5,8 @@ import { electronAPI } from '@electron-toolkit/preload'
 const api = {
   exitProgram: (): Promise<void> => ipcRenderer.invoke('exitProgram'),
   getPath: async (): Promise<Array<string>> => await ipcRenderer.invoke('getPath'),
-  addPath: (): Promise<void> => ipcRenderer.invoke('addPath')
+  addPath: (): Promise<void> => ipcRenderer.invoke('addPath'),
+  deletePath: (path: string): Promise<void> => ipcRenderer.invoke('deletePath', path)
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

@@ -28,6 +28,12 @@ class Settings extends Component<Record<string, never>, State> {
     this.updatePathList()
   }
 
+  handleDeletePath = (path: string): void => {
+    api.deletePath(path).then(() => {
+      this.updatePathList()
+    })
+  }
+
   componentDidMount(): void {
     this.updatePathList()
   }
@@ -53,6 +59,7 @@ class Settings extends Component<Record<string, never>, State> {
                   className={'InlineButton'}
                   type={'tiny'}
                   danger
+                  onClick={(): void => this.handleDeletePath(item)}
                 ></CustomizationButton>
                 {/*<Button danger className={'InlineButton'} type="primary" size={'small'}>delete</Button>*/}
               </List.Item>

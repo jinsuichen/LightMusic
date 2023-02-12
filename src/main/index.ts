@@ -3,7 +3,7 @@ import { join } from 'path'
 const { dialog } = require('electron')
 
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import { addPath, getPath } from './path'
+import { addPath, getPath, deletePath } from './path'
 // import icon from '../../resources/icon.png?asset'
 
 let mainWindow: BrowserWindow
@@ -92,5 +92,10 @@ const registerHandler = (): void => {
       const dir: string = dirList[0]
       addPath(dir)
     }
+  })
+
+  ipcMain.handle('deletePath', async (_, ...args) => {
+    const path: string = args[0]
+    deletePath(path)
   })
 }

@@ -7,6 +7,7 @@ declare global {
       exitProgram(): Promise<void>
       getPath(): Promise<Array<string>>
       addPath(): Promise<void>
+      deletePath(path: string): Promise<void>
     }
   }
 }

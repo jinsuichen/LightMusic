@@ -19,4 +19,12 @@ const addPath = (path: string): void => {
   store.set('pathList', newPathList)
 }
 
-export { getPath, addPath }
+const deletePath = (path: string): void => {
+  const currentPathList = getPath()
+  const newPathList = currentPathList.filter((value) => {
+    return value !== path
+  })
+  store.set('pathList', newPathList)
+}
+
+export { getPath, addPath, deletePath }
