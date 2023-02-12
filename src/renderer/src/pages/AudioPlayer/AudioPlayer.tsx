@@ -5,12 +5,8 @@ import { CaretRightOutlined, FastBackwardOutlined, FastForwardOutlined } from '@
 import CustomizationButton from '../../components/CustomizationButton/CustomizationButton'
 import ArtWork from '../../assets/artwork/artwork.jpg'
 
-type Props = {}
-
-type State = {}
-
-class AudioPlayer extends React.Component<Props, State> {
-  render() {
+class AudioPlayer extends React.Component {
+  render(): JSX.Element {
     return (
       <div className="AudioPlayerContainer">
         <img src={ArtWork} alt="artwork" className={'ArtWork'} />

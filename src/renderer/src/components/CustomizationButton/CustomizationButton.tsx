@@ -9,7 +9,7 @@ type Props = {
   shape?: 'round' | 'circle' | 'default'
   size?: 'small' | 'middle' | 'large'
   icon?: React.ReactNode
-  children?: any
+  children?: React.ReactNode
   danger?: boolean
   className?: string
   onClick?:
@@ -26,7 +26,7 @@ class CustomizationButton extends Component<Props> {
     children: undefined,
     danger: false
   }
-  render() {
+  render(): JSX.Element {
     const { color, type, className } = this.props
     return (
       <ConfigProvider theme={{ token: { colorPrimary: color } }}>

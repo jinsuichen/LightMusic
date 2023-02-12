@@ -6,7 +6,7 @@ import AudioPlayer from './pages/AudioPlayer/AudioPlayer'
 
 import './App.scss'
 
-const App = () => (
+const App = (): JSX.Element => (
   <BrowserRouter>
     <div className="App">
       <Header />

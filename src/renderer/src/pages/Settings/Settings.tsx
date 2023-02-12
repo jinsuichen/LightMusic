@@ -2,15 +2,39 @@ import { Component } from 'react'
 import { List } from 'antd'
 
 import CustomizationButton from '../../components/CustomizationButton/CustomizationButton'
+const { api } = window
 
 import './Settings.scss'
 
-type Props = {}
+type State = {
+  pathList: Array<string>
+}
 
-type State = {}
+class Settings extends Component<Record<string, never>, State> {
+  state: State = {
+    pathList: []
+  }
 
-class Settings extends Component<Props, State> {
-  render() {
+  updatePathList = (): void => {
+    api.getPath().then((result) => {
+      this.setState({
+        pathList: result
+      })
+    })
+  }
+
+  handleNewPath = (): void => {
+    api.addPath()
+    this.updatePathList()
+  }
+
+  componentDidMount(): void {
+    this.updatePathList()
+  }
+
+  render(): JSX.Element {
+    const { pathList } = this.state
+
     return (
       <div className={'Settings'}>
         <List
@@ -20,27 +44,8 @@ class Settings extends Component<Props, State> {
             align: 'center',
             pageSize: 6
           }}
-          dataSource={[
-            'sasfdssssssssssssssssssssssssssssssssssssssssssssssssssd',
-            'sadfasd',
-            'yuweirt',
-            'sasfdsd',
-            'sadfasd',
-            'yuweirt',
-            'sasfdsd',
-            'sadfasd',
-            'yuweirt',
-            'sasfdsd',
-            'sadfasd',
-            'yuweirt',
-            'sasfdsd',
-            'sadfasd',
-            'yuweirt',
-            'sasfdsd',
-            'sadfasd',
-            'yuweirt'
-          ]}
-          renderItem={(item) => (
+          dataSource={pathList}
+          renderItem={(item): JSX.Element => (
             <List.Item className={'ListItem'}>
               <p className={'TextField'}>{item}</p>
               <CustomizationButton
@@ -57,6 +62,7 @@ class Settings extends Component<Props, State> {
           color={'#407A52'}
           type={'normal'}
           size={'middle'}
+          onClick={this.handleNewPath}
         >
           New
         </CustomizationButton>

@@ -3,7 +3,9 @@ import { electronAPI } from '@electron-toolkit/preload'
 
 // Custom APIs for renderer
 const api = {
-  exitProgram: () => ipcRenderer.invoke('exitProgram')
+  exitProgram: (): Promise<void> => ipcRenderer.invoke('exitProgram'),
+  getPath: async (): Promise<Array<string>> => await ipcRenderer.invoke('getPath'),
+  addPath: (): Promise<void> => ipcRenderer.invoke('addPath')
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

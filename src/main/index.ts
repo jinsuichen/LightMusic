@@ -1,9 +1,13 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
+const { dialog } = require('electron')
+
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
+import { addPath, getPath } from './path'
 // import icon from '../../resources/icon.png?asset'
 
-function createWindow(): void {
+let mainWindow: BrowserWindow
+function createWindow(): BrowserWindow {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 350,
@@ -35,7 +39,7 @@ function createWindow(): void {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
 
-  ipcMain.handle('exitProgram', () => mainWindow.close())
+  return mainWindow
 }
 
 // This method will be called when Electron has finished
@@ -52,7 +56,9 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  createWindow()
+  mainWindow = createWindow()
+
+  registerHandler()
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
@@ -70,5 +76,21 @@ app.on('window-all-closed', () => {
   }
 })
 
-// In this file you can include the rest of your app"s specific main process
-// code. You can also put them in separate files and require them here.
+// the rest of the app's specific main process code.
+const registerHandler = (): void => {
+  ipcMain.handle('exitProgram', () => mainWindow.close())
+
+  ipcMain.handle('getPath', () => {
+    return getPath()
+  })
+
+  ipcMain.handle('addPath', () => {
+    const dirList = dialog.showOpenDialogSync(mainWindow, {
+      properties: ['openDirectory']
+    })
+    if (dirList) {
+      const dir: string = dirList[0]
+      addPath(dir)
+    }
+  })
+}

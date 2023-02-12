@@ -5,20 +5,20 @@ import CustomizationButton from '../CustomizationButton/CustomizationButton'
 
 import './Header.scss'
 
-type Props = {}
+const { api } = window
 
 type State = {
   toPosition: string
   switchButtonColor: string
 }
 
-class Header extends Component<Props, State> {
+class Header extends Component<Record<string, never>, State> {
   state: State = {
     toPosition: 'Settings',
     switchButtonColor: '#9B9B9B'
   }
 
-  handleClick = () => {
+  handleClick = (): void => {
     const { toPosition, switchButtonColor } = this.state
     this.setState({
       toPosition: toPosition === 'Settings' ? 'AudioPlayer' : 'Settings',
@@ -26,8 +26,8 @@ class Header extends Component<Props, State> {
     })
   }
 
-  render() {
-    const { exitProgram } = (window as any).api
+  render(): JSX.Element {
+    const { exitProgram } = api
 
     const { toPosition, switchButtonColor } = this.state
 

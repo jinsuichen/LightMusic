@@ -26,7 +26,12 @@ $width: 100%;
     display: flex;
 
     .TextField {
+      // Show ellipses in excess
       overflow: hidden;
+      text-overflow: ellipsis;
+
+      // Disable text line feeds
+      white-space: nowrap;
     }
   }
 
