@@ -7,11 +7,12 @@ type AudioInfo = {
 };
 // Custom APIs for renderer
 const api = {
-  exitProgram: (): Promise<void> => ipcRenderer.invoke('exitProgram'),
+  closeFocusWindow: (): Promise<void> => ipcRenderer.invoke('closeFocusWindow'),
   getPath: async (): Promise<Array<string>> => await ipcRenderer.invoke('getPath'),
   addPath: (): Promise<void> => ipcRenderer.invoke('addPath'),
   deletePath: (path: string): Promise<void> => ipcRenderer.invoke('deletePath', path),
   getAudioInfoList: (): Promise<Array<AudioInfo>> => ipcRenderer.invoke('getAudioInfoList'),
+  createSettingsWindow: (): Promise<void> => ipcRenderer.invoke('createSettingsWindow'),
 };
 
 // Use `contextBridge` APIs to expose Electron APIs to

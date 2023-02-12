@@ -9,11 +9,12 @@ declare global {
   interface Window {
     electron: ElectronAPI;
     api: {
-      exitProgram(): Promise<void>;
+      closeFocusWindow(): Promise<void>;
       getPath(): Promise<Array<string>>;
       addPath(): Promise<void>;
       deletePath(path: string): Promise<void>;
       getAudioInfoList(): Promise<Array<AudioInfo>>;
+      createSettingsWindow(): Promise<void>;
     };
   }
 }

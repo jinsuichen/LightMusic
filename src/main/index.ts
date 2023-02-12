@@ -6,7 +6,7 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 import { addPath, getPath, deletePath, getAudioInfoList } from './path';
 
 let mainWindow: BrowserWindow;
-function createWindow(): BrowserWindow {
+function createMainWindow(): BrowserWindow {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 350,
@@ -33,13 +33,50 @@ function createWindow(): BrowserWindow {
 
   // HMR for renderer base on electron-vite cli.
   // Load the remote URL for development or the local html file for production.
+  const router = '/AudioPlayer';
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
-    mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL']);
+    mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'] + router);
   } else {
-    mainWindow.loadFile(join(__dirname, '../renderer/index.html'));
+    mainWindow.loadFile(join(__dirname, '../renderer/index.html' + router));
   }
 
   return mainWindow;
+}
+
+function createSettingWindow(): BrowserWindow {
+  // Create the browser window.
+  const settingWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    frame: false,
+    transparent: true,
+    resizable: false,
+    // ...(process.platform === 'linux' ? { icon } : {}),
+    webPreferences: {
+      preload: join(__dirname, '../preload/index.js'),
+      sandbox: false,
+    },
+  });
+
+  // settingWindow.on('ready-to-show', () => {
+  //   mainWindow.show();
+  // });
+
+  settingWindow.webContents.setWindowOpenHandler((details) => {
+    shell.openExternal(details.url);
+    return { action: 'deny' };
+  });
+
+  // HMR for renderer base on electron-vite cli.
+  // Load the remote URL for development or the local html file for production.
+  const router = '/Settings';
+  if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+    settingWindow.loadURL(process.env['ELECTRON_RENDERER_URL'] + router);
+  } else {
+    settingWindow.loadFile(join(__dirname, '../renderer/index.html' + router));
+  }
+
+  return settingWindow;
 }
 
 // This method will be called when Electron has finished
@@ -56,14 +93,14 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window);
   });
 
-  mainWindow = createWindow();
+  mainWindow = createMainWindow();
 
   registerHandler();
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    if (BrowserWindow.getAllWindows().length === 0) createMainWindow();
   });
 });
 
@@ -78,7 +115,12 @@ app.on('window-all-closed', () => {
 
 // the rest of the app's specific main process code.
 const registerHandler = (): void => {
-  ipcMain.handle('exitProgram', () => mainWindow.close());
+  ipcMain.handle('closeFocusWindow', () => {
+    const focusWindow: BrowserWindow | null = BrowserWindow.getFocusedWindow();
+    if (focusWindow) {
+      focusWindow.close();
+    }
+  });
 
   ipcMain.handle('getPath', () => {
     return getPath();
@@ -101,5 +143,9 @@ const registerHandler = (): void => {
 
   ipcMain.handle('getAudioInfoList', () => {
     return getAudioInfoList();
+  });
+
+  ipcMain.handle('createSettingsWindow', () => {
+    createSettingWindow();
   });
 };

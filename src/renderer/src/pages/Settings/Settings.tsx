@@ -17,13 +17,22 @@ class Settings extends Component<Props, Record<string, never>> {
 
     return (
       <div className={'Settings'}>
+        <CustomizationButton
+          className={'AddButton'}
+          color={'#407A52'}
+          type={'normal'}
+          size={'middle'}
+          onClick={handleNewPath}
+        >
+          From Local
+        </CustomizationButton>
         <ConfigProvider theme={{ token: { colorPrimary: '#407a52' } }}>
           <List
             size={'small'}
             bordered
             pagination={{
               align: 'center',
-              pageSize: 6,
+              pageSize: 10,
             }}
             dataSource={pathList}
             renderItem={(item): JSX.Element => (
@@ -40,15 +49,6 @@ class Settings extends Component<Props, Record<string, never>> {
             )}
           />
         </ConfigProvider>
-        <CustomizationButton
-          className={'AddButton'}
-          color={'#407A52'}
-          type={'normal'}
-          size={'middle'}
-          onClick={handleNewPath}
-        >
-          New
-        </CustomizationButton>
       </div>
     );
   }

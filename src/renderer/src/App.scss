@@ -9,7 +9,16 @@ $color5: map-get(theme.$current-theme, 'color5');
 .App {
   height: 100%;
   width: 100%;
+}
 
-  background-color: $color1;
+.Main-App {
+  background-color: #8db255;
   border-radius: 20px;
+}
+
+.Setting-App {
+  background-color: whitesmoke;
+  border: 1px solid black;
+  box-sizing: border-box;
+  border-radius: 10px;
 }

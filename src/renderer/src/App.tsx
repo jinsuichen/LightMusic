@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Header from './components/Header/Header';
+import Header from './pages/Header/Header';
 import Settings from './pages/Settings/Settings';
 import AudioPlayer from './pages/AudioPlayer/AudioPlayer';
 const { api } = window;
@@ -59,27 +59,32 @@ class App extends React.Component<Record<string, never>, State> {
     const { pathList, audioInfoList } = this.state;
 
     return (
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={<AudioPlayer audioInfoList={audioInfoList} />} />
-          <Route
-            path="/AudioPlayer"
-            element={<AudioPlayer audioInfoList={audioInfoList} />}
-            index
-          />
-          <Route
-            path="/Settings"
-            element={
+      <Routes>
+        <Route
+          path="/AudioPlayer"
+          element={
+            <div className={'App Main-App'}>
+              <Header select={['setting', 'close']} />
+              <AudioPlayer audioInfoList={audioInfoList} />
+            </div>
+          }
+          index
+        />
+
+        <Route
+          path="/Settings"
+          element={
+            <div className={'App Setting-App'}>
+              <Header select={['close']} />
               <Settings
                 pathList={pathList}
                 handleDeletePath={this.handleDeletePath}
                 handleNewPath={this.handleNewPath}
               />
-            }
-          />
-        </Routes>
-      </div>
+            </div>
+          }
+        />
+      </Routes>
     );
   }
 }

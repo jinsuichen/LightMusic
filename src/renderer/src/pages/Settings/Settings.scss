@@ -17,7 +17,7 @@ $width: 100%;
       -webkit-app-region: no-drag;
     }
     //background-color: white;
-    border: 3.5px solid #407a52;
+    //border: 3.5px solid #407a52;
     //border: none;
     border-radius: 6px;
   }
@@ -36,8 +36,8 @@ $width: 100%;
   }
 
   .ant-pagination-item {
-    background-color: #8db255 !important;
-    border: 3px #407a52 solid !important;
+    //background-color: #8db255 !important;
+    //border: 3px #407a52 solid !important;
   }
 
   .InlineButton {
@@ -52,6 +52,6 @@ $width: 100%;
       -webkit-app-region: no-drag;
     }
 
-    margin: 15px 10px 0 260px;
+    margin: 0 0 15px 5px;
   }
 }
