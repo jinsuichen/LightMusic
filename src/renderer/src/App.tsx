@@ -11,7 +11,6 @@ import './App.scss'
 type AudioInfo = {
   path: string
   name: string
-  suffix: string
 }
 
 type State = {
@@ -29,6 +28,7 @@ class App extends React.Component<Record<string, never>, State> {
       this.setState({
         pathList: result
       })
+      this.updateAudioInfoList()
     })
   }
 
@@ -40,6 +40,15 @@ class App extends React.Component<Record<string, never>, State> {
   handleDeletePath = (path: string): void => {
     api.deletePath(path).then(() => {
       this.updatePathList()
+    })
+  }
+
+  updateAudioInfoList = (): void => {
+    api.getAudioInfoList().then((result) => {
+      console.log(result)
+      this.setState({
+        audioInfoList: result
+      })
     })
   }
 

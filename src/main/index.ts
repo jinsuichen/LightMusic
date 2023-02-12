@@ -3,7 +3,7 @@ import { join } from 'path'
 const { dialog } = require('electron')
 
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import { addPath, getPath, deletePath } from './path'
+import { addPath, getPath, deletePath, getAudioInfoList } from './path'
 // import icon from '../../resources/icon.png?asset'
 
 let mainWindow: BrowserWindow
@@ -97,5 +97,9 @@ const registerHandler = (): void => {
   ipcMain.handle('deletePath', async (_, ...args) => {
     const path: string = args[0]
     deletePath(path)
+  })
+
+  ipcMain.handle('getAudioInfoList', () => {
+    return getAudioInfoList()
   })
 }
