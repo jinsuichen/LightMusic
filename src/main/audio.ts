@@ -32,7 +32,11 @@ const addAudio = (audioInfo: AudioInfo): void => {
 const deleteAudio = (audioInfo: AudioInfo): void => {
   const currentAudioList = getAudioList();
   const newAudioList = currentAudioList.filter((item) => {
-    return item !== audioInfo;
+    return (
+      item.caption !== audioInfo.caption ||
+      item.from !== audioInfo.from ||
+      item.source !== audioInfo.source
+    );
   });
   store.set('audioList', newAudioList);
 };
