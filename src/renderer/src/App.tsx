@@ -29,7 +29,6 @@ class App extends React.Component<Record<string, never>, State> {
       this.setState({
         audioInfoList: result,
       });
-      this.updateAudioInfoList();
     });
   };
   //
