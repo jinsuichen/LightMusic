@@ -9,8 +9,9 @@ const { api } = window;
 import './App.scss';
 
 type AudioInfo = {
-  path: string;
-  name: string;
+  source: string;
+  caption: string;
+  from: 'local' | 'subscribe';
 };
 
 type State = {
@@ -23,40 +24,32 @@ class App extends React.Component<Record<string, never>, State> {
     pathList: [],
     audioInfoList: [],
   };
-  updatePathList = (): void => {
-    api.getPath().then((result) => {
+  updateAudioInfoList = (): void => {
+    api.getAudioList().then((result) => {
       this.setState({
-        pathList: result,
+        audioInfoList: result,
       });
       this.updateAudioInfoList();
     });
   };
-
-  handleNewPath = (): void => {
-    api.addPath();
-    this.updatePathList();
+  //
+  handleSubscribeFromLocal = (): void => {
+    api.subscribeFromLocal();
+    this.updateAudioInfoList();
   };
 
-  handleDeletePath = (path: string): void => {
-    api.deletePath(path).then(() => {
-      this.updatePathList();
-    });
-  };
-
-  updateAudioInfoList = (): void => {
-    api.getAudioInfoList().then((result) => {
-      this.setState({
-        audioInfoList: result,
-      });
+  handleDeleteAudioInfo = (audioInfo: AudioInfo): void => {
+    api.deleteAudio(audioInfo).then(() => {
+      this.updateAudioInfoList();
     });
   };
 
   componentDidMount(): void {
-    this.updatePathList();
+    this.updateAudioInfoList();
   }
 
   render(): JSX.Element {
-    const { pathList, audioInfoList } = this.state;
+    const { audioInfoList } = this.state;
 
     return (
       <Routes>
@@ -77,9 +70,9 @@ class App extends React.Component<Record<string, never>, State> {
             <div className={'App Setting-App'}>
               <Header select={['close']} />
               <Settings
-                pathList={pathList}
-                handleDeletePath={this.handleDeletePath}
-                handleNewPath={this.handleNewPath}
+                audioInfoList={audioInfoList}
+                handleDeleteAudioInfo={this.handleDeleteAudioInfo}
+                handleNewAudioInfo={this.handleSubscribeFromLocal}
               />
             </div>
           }

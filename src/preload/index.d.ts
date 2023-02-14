@@ -1,8 +1,9 @@
 import { ElectronAPI } from '@electron-toolkit/preload';
 
 type AudioInfo = {
-  path: string;
-  name: string;
+  source: string;
+  caption: string;
+  from: 'local' | 'subscribe';
 };
 
 declare global {
@@ -10,11 +11,10 @@ declare global {
     electron: ElectronAPI;
     api: {
       closeFocusWindow(): Promise<void>;
-      getPath(): Promise<Array<string>>;
-      addPath(): Promise<void>;
-      deletePath(path: string): Promise<void>;
-      getAudioInfoList(): Promise<Array<AudioInfo>>;
       createSettingsWindow(): Promise<void>;
+      getAudioList(): Promise<Array<AudioInfo>>;
+      subscribeFromLocal(): Promise<void>;
+      deleteAudio(audio: AudioInfo): Promise<void>;
     };
   }
 }

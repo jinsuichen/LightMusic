@@ -3,7 +3,14 @@ import { join } from 'path';
 const { dialog } = require('electron');
 
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
-import { addPath, getPath, deletePath, getAudioInfoList } from './path';
+import { subscribeFromLocal } from './localSubscribe';
+import { getAudioList, deleteAudio } from './audio';
+
+type AudioInfo = {
+  source: string;
+  caption: string;
+  from: 'local' | 'subscribe';
+};
 
 let mainWindow: BrowserWindow;
 function createMainWindow(): BrowserWindow {
@@ -122,27 +129,23 @@ const registerHandler = (): void => {
     }
   });
 
-  ipcMain.handle('getPath', () => {
-    return getPath();
+  ipcMain.handle('getAudioList', (): Array<AudioInfo> => {
+    return getAudioList();
   });
 
-  ipcMain.handle('addPath', () => {
+  ipcMain.handle('subscribeFromLocal', () => {
     const dirList = dialog.showOpenDialogSync(mainWindow, {
       properties: ['openDirectory'],
     });
     if (dirList) {
       const dir: string = dirList[0];
-      addPath(dir);
+      subscribeFromLocal(dir);
     }
   });
 
-  ipcMain.handle('deletePath', async (_, ...args) => {
-    const path: string = args[0];
-    deletePath(path);
-  });
-
-  ipcMain.handle('getAudioInfoList', () => {
-    return getAudioInfoList();
+  ipcMain.handle('deleteAudio', async (_, ...args) => {
+    const audio: AudioInfo = args[0];
+    deleteAudio(audio);
   });
 
   ipcMain.handle('createSettingsWindow', () => {

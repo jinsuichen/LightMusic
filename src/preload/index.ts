@@ -2,17 +2,22 @@ import { contextBridge, ipcRenderer } from 'electron';
 import { electronAPI } from '@electron-toolkit/preload';
 
 type AudioInfo = {
-  path: string;
-  name: string;
+  source: string;
+  caption: string;
+  from: 'local' | 'subscribe';
 };
+
 // Custom APIs for renderer
 const api = {
   closeFocusWindow: (): Promise<void> => ipcRenderer.invoke('closeFocusWindow'),
-  getPath: async (): Promise<Array<string>> => await ipcRenderer.invoke('getPath'),
-  addPath: (): Promise<void> => ipcRenderer.invoke('addPath'),
-  deletePath: (path: string): Promise<void> => ipcRenderer.invoke('deletePath', path),
-  getAudioInfoList: (): Promise<Array<AudioInfo>> => ipcRenderer.invoke('getAudioInfoList'),
   createSettingsWindow: (): Promise<void> => ipcRenderer.invoke('createSettingsWindow'),
+  // getPath: async (): Promise<Array<string>> => await ipcRenderer.invoke('getPath'),
+  // addPath: (): Promise<void> => ipcRenderer.invoke('addPath'),
+  // deletePath: (path: string): Promise<void> => ipcRenderer.invoke('deletePath', path),
+  // getAudioInfoList: (): Promise<Array<AudioInfo>> => ipcRenderer.invoke('getAudioInfoList'),
+  getAudioList: (): Promise<Array<AudioInfo>> => ipcRenderer.invoke('getAudioList'),
+  subscribeFromLocal: (): Promise<void> => ipcRenderer.invoke('subscribeFromLocal'),
+  deleteAudio: (audio: AudioInfo): Promise<void> => ipcRenderer.invoke('deleteAudio', audio),
 };
 
 // Use `contextBridge` APIs to expose Electron APIs to

@@ -11,8 +11,9 @@ import CustomizationButton from '../../components/CustomizationButton/Customizat
 import ArtWork from '../../assets/artwork/artwork.jpg';
 
 type AudioInfo = {
-  path: string;
-  name: string;
+  source: string;
+  caption: string;
+  from: 'local' | 'subscribe';
 };
 
 type Props = {
@@ -46,7 +47,7 @@ class AudioPlayer extends React.Component<Props, State> {
       const randIndex: number = (Math.random() * audioInfoList.length) | 0;
       const item: AudioInfo = audioInfoList[randIndex];
 
-      const audioObj: HTMLAudioElement = new Audio('file://' + item.path);
+      const audioObj: HTMLAudioElement = new Audio(item.source);
       audioObj.play();
       this.setState({
         currentAudioObj: audioObj,

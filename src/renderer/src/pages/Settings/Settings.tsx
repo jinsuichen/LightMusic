@@ -5,15 +5,21 @@ import CustomizationButton from '../../components/CustomizationButton/Customizat
 
 import './Settings.scss';
 
+type AudioInfo = {
+  source: string;
+  caption: string;
+  from: 'local' | 'subscribe';
+};
+
 type Props = {
-  pathList: Array<string>;
-  handleDeletePath(path: string): void;
-  handleNewPath(): void;
+  audioInfoList: Array<AudioInfo>;
+  handleDeleteAudioInfo(audioInfo: AudioInfo): void;
+  handleNewAudioInfo(): void;
 };
 
 class Settings extends Component<Props, Record<string, never>> {
   render(): JSX.Element {
-    const { pathList, handleDeletePath, handleNewPath } = this.props;
+    const { audioInfoList, handleDeleteAudioInfo, handleNewAudioInfo } = this.props;
 
     return (
       <div className={'Settings'}>
@@ -22,10 +28,11 @@ class Settings extends Component<Props, Record<string, never>> {
           color={'#407A52'}
           type={'normal'}
           size={'middle'}
-          onClick={handleNewPath}
+          onClick={handleNewAudioInfo}
         >
           From Local
         </CustomizationButton>
+
         <ConfigProvider theme={{ token: { colorPrimary: '#407a52' } }}>
           <List
             size={'small'}
@@ -34,17 +41,16 @@ class Settings extends Component<Props, Record<string, never>> {
               align: 'center',
               pageSize: 10,
             }}
-            dataSource={pathList}
+            dataSource={audioInfoList}
             renderItem={(item): JSX.Element => (
               <List.Item className={'ListItem'}>
-                <p className={'TextField'}>{item}</p>
+                <p className={'TextField'}>{item.caption}</p>
                 <CustomizationButton
                   className={'InlineButton'}
                   type={'tiny'}
                   danger
-                  onClick={(): void => handleDeletePath(item)}
+                  onClick={(): void => handleDeleteAudioInfo(item)}
                 ></CustomizationButton>
-                {/*<Button danger className={'InlineButton'} type="primary" size={'small'}>delete</Button>*/}
               </List.Item>
             )}
           />
