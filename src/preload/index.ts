@@ -5,6 +5,10 @@ type AudioInfo = {
   source: string;
   caption: string;
   from: 'local' | 'subscribe';
+  status: 'ok' | 'down';
+  author: string;
+  pic: string;
+  lyric: string;
 };
 
 // Custom APIs for renderer
@@ -18,6 +22,7 @@ const api = {
   getAudioList: (): Promise<Array<AudioInfo>> => ipcRenderer.invoke('getAudioList'),
   subscribeFromLocal: (): Promise<void> => ipcRenderer.invoke('subscribeFromLocal'),
   deleteAudio: (audio: AudioInfo): Promise<void> => ipcRenderer.invoke('deleteAudio', audio),
+  changeStatusToDown: (audio: AudioInfo): Promise<void> => ipcRenderer.invoke('changeStatusToDown', audio),
 };
 
 // Use `contextBridge` APIs to expose Electron APIs to

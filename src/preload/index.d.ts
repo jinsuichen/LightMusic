@@ -4,6 +4,10 @@ type AudioInfo = {
   source: string;
   caption: string;
   from: 'local' | 'subscribe';
+  status: 'ok' | 'down';
+  author: string;
+  pic: string;
+  lyric: string;
 };
 
 declare global {
@@ -15,6 +19,7 @@ declare global {
       getAudioList(): Promise<Array<AudioInfo>>;
       subscribeFromLocal(): Promise<void>;
       deleteAudio(audio: AudioInfo): Promise<void>;
+      changeStatusToDown(audio: AudioInfo): Promise<void>;
     };
   }
 }

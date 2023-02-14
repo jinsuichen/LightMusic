@@ -4,12 +4,16 @@ const { dialog } = require('electron');
 
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 import { subscribeFromLocal } from './localSubscribe';
-import { getAudioList, deleteAudio } from './audio';
+import {getAudioList, deleteAudio, changeStatusToDown} from './audio';
 
 type AudioInfo = {
   source: string;
   caption: string;
   from: 'local' | 'subscribe';
+  status: 'ok' | 'down';
+  author: string;
+  pic: string;
+  lyric: string;
 };
 
 let mainWindow: BrowserWindow;
@@ -150,5 +154,10 @@ const registerHandler = (): void => {
 
   ipcMain.handle('createSettingsWindow', () => {
     createSettingWindow();
+  });
+
+  ipcMain.handle('changeStatusToDown', async (_, ...args) => {
+    const audioInfo: AudioInfo = args[0];
+    changeStatusToDown(audioInfo);
   });
 };

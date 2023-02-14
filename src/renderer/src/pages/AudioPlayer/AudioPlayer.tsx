@@ -10,10 +10,16 @@ import {
 import CustomizationButton from '../../components/CustomizationButton/CustomizationButton';
 import ArtWork from '../../assets/artwork/artwork.jpg';
 
+const {api} = window
+
 type AudioInfo = {
   source: string;
   caption: string;
   from: 'local' | 'subscribe';
+  status: 'ok' | 'down';
+  author: string;
+  pic: string;
+  lyric: string;
 };
 
 type PlayingSheet = {
@@ -100,7 +106,10 @@ class AudioPlayer extends React.Component<Props, State> {
     // play audio
     const audioObj: HTMLAudioElement = new Audio(item.source);
 
-    audioObj.play();
+    audioObj.play().catch(() => {
+      console.error('Fail to load music. Will change status of AudioInfo.');
+      api.changeStatusToDown(item);
+    });
 
     // following statements cannot be in callback function of audioObj.play();
     // to avoid waiting so long and currentAudioObj.ended is always true,

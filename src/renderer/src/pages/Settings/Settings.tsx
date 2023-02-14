@@ -9,6 +9,10 @@ type AudioInfo = {
   source: string;
   caption: string;
   from: 'local' | 'subscribe';
+  status: 'ok' | 'down';
+  author: string;
+  pic: string;
+  lyric: string;
 };
 
 type Props = {

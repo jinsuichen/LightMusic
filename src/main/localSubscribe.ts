@@ -9,6 +9,10 @@ type AudioInfo = {
   source: string;
   caption: string;
   from: 'local' | 'subscribe';
+  status: 'ok' | 'down';
+  author: string;
+  pic: string;
+  lyric: string;
 };
 
 // add audios in localSubscribe dir to audioList
@@ -44,6 +48,10 @@ const scanPath = (dirPath: string, result: Array<AudioInfo>): void => {
             source: 'file://' + filePath,
             caption: fileName,
             from: 'local',
+            status: 'ok',
+            pic: '',
+            lyric: '',
+            author: '',
           });
         }
       }
