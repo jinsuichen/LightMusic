@@ -10,7 +10,7 @@ import {
 import CustomizationButton from '../../components/CustomizationButton/CustomizationButton';
 import ArtWork from '../../assets/artwork/artwork.jpg';
 
-const {api} = window
+const { api } = window;
 
 type AudioInfo = {
   source: string;
@@ -176,6 +176,11 @@ class AudioPlayer extends React.Component<Props, State> {
         ? 'No Audio'
         : playingSheet.list[playingSheet.currentPos].caption;
 
+    const percent = currentAudioObj ? currentAudioObj.currentTime / currentAudioObj.duration : 0;
+    const precessStyle = `
+    -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${percent}, #fff), color-stop(${percent}, #777))
+  `;
+
     return (
       <div className="AudioPlayerContainer">
         <img src={ArtWork} alt="artwork" className={'ArtWork'} />
@@ -218,6 +223,7 @@ class AudioPlayer extends React.Component<Props, State> {
           }
           className={'Process'}
           onChange={this.handleProcessChange}
+          style={{ background: precessStyle }}
         />
       </div>
     );

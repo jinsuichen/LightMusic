@@ -35,6 +35,14 @@ $color5: map-get(theme.$current-theme, 'color5');
     text-align: center;
 
     font-weight: 700;
+    //font-size: 40px;
+
+    // Show ellipses in excess
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    // Disable text line feeds
+    white-space: nowrap;
   }
 
   .Buttons {

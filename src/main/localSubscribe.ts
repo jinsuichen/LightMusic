@@ -46,7 +46,7 @@ const scanPath = (dirPath: string, result: Array<AudioInfo>): void => {
         if (isAudioFile) {
           result.push({
             source: 'file://' + filePath,
-            caption: fileName,
+            caption: fileName.substring(0, fileName.length - 4),
             from: 'local',
             status: 'ok',
             pic: '',
