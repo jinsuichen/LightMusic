@@ -4,7 +4,7 @@ const { dialog } = require('electron');
 
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 import { subscribeFromLocal } from './localSubscribe';
-import {getAudioList, deleteAudio, changeStatusToDown} from './audio';
+import { getAudioList, deleteAudio, changeStatusToDown } from './audio';
 
 type AudioInfo = {
   source: string;

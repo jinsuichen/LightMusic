@@ -35,10 +35,10 @@ const addAudio = (audioInfo: AudioInfo): void => {
 
   const exist = currentAudioList.find((item) => {
     const same: boolean = isSame(audioInfo, item);
-    if(same) {
+    if (same) {
       item.status = 'ok';
     }
-    return same
+    return same;
   });
   if (exist) {
     store.set('audioList', currentAudioList);
@@ -56,14 +56,14 @@ const deleteAudio = (audioInfo: AudioInfo): void => {
 };
 
 const changeStatusToDown = (audioInfo: AudioInfo): void => {
-  const audioInfoList =  getAudioList();
+  const audioInfoList = getAudioList();
   const newAudioInfoList = audioInfoList.map((item) => {
-    if(isSame(audioInfo, item)) {
-      return {...item, status:'down'};
+    if (isSame(audioInfo, item)) {
+      return { ...item, status: 'down' };
     }
     return item;
-  })
+  });
   store.set('audioList', newAudioInfoList);
-}
+};
 
 export { getAudioList, addAudio, deleteAudio, changeStatusToDown };

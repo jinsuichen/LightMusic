@@ -22,7 +22,8 @@ const api = {
   getAudioList: (): Promise<Array<AudioInfo>> => ipcRenderer.invoke('getAudioList'),
   subscribeFromLocal: (): Promise<void> => ipcRenderer.invoke('subscribeFromLocal'),
   deleteAudio: (audio: AudioInfo): Promise<void> => ipcRenderer.invoke('deleteAudio', audio),
-  changeStatusToDown: (audio: AudioInfo): Promise<void> => ipcRenderer.invoke('changeStatusToDown', audio),
+  changeStatusToDown: (audio: AudioInfo): Promise<void> =>
+    ipcRenderer.invoke('changeStatusToDown', audio),
 };
 
 // Use `contextBridge` APIs to expose Electron APIs to
