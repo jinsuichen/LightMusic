@@ -27,7 +27,6 @@ const getAudioList = (): Array<AudioInfo> => {
   if (!store.has('audioList')) {
     store.set('audioList', []);
   }
-  console.log(store.get('audioList'))
   return store.get('audioList') as Array<AudioInfo>;
 };
 
@@ -51,7 +50,7 @@ const addAudio = (audioInfo: AudioInfo): void => {
 const deleteAudio = (audioInfo: AudioInfo): void => {
   const currentAudioList = getAudioList();
   const newAudioList = currentAudioList.filter((item) => {
-    return isSame(audioInfo, item);
+    return !isSame(audioInfo, item);
   });
   store.set('audioList', newAudioList);
 };
