@@ -13,6 +13,7 @@ files:
 asarUnpack:
   - resources/*
 afterSign: build/notarize.js
+icon: './resources/icons'
 artifactName: ${productName}-${version}-${platform}-${arch}.${ext}
 win:
   target:
