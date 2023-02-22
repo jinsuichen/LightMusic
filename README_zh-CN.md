@@ -33,7 +33,7 @@
 - 📐 界面简洁，以少胜多
 - 🚀 主要使用 <a href="https://reactjs.org/">React</a>、 <a href="https://vitejs.dev/">Vite</a> 和 <a href="https://www.electronjs.org/">Electron</a> 等技术
 
-# ⚙ 项目构建
+# ⚙ 运行代码
 
 ## Clone 这个仓库
 
@@ -53,7 +53,7 @@ $ npm install
 $ npm run dev
 ```
 
-## 多平台编译
+## 打包
 
 ```bash
 # For Windows

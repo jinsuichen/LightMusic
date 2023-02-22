@@ -35,7 +35,7 @@
 
 
 
-# ⚙ Build
+# ⚙ Run
 
 ## Clone the code
 
@@ -49,13 +49,13 @@ $ git clone https://github.com/jinsuichen/light-music.git
 $ npm install
 ```
 
-## Development
+## Develop
 
 ```bash
 $ npm run dev
 ```
 
-## Compile
+## Build
 
 ```bash
 # For Windows
