@@ -1,10 +1,11 @@
 {
-  "name": "electron-app",
+  "name": "light-music",
   "version": "1.0.0",
-  "description": "An Electron application with React and TypeScript",
+  "description": "A cross-platform minimalist style music player",
   "main": "./out/main/index.js",
-  "author": "example.com",
-  "homepage": "https://www.electronjs.org",
+  "author": "jinsuichen <ischenjinsui@gmail.com>",
+  "homepage": "https://github.com/jinsuichen/light-music",
+  "license" : "GPL-3.0",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
