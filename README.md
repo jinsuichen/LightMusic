@@ -26,7 +26,7 @@
 
 - 🚢 Cross Platform. Compatible with macOS, Windows, and Linux
 - 📐 Simple interface. Less is more
-- 🚀 Powered by React, Vite, and Electron
+- 🚀 Powered by <a href="https://reactjs.org/">React</a>, <a href="https://vitejs.dev/">Vite</a>, and <a href="https://www.electronjs.org/">Electron</a>
 
 
 
@@ -53,7 +53,7 @@ $ npm run dev
 ## Compile
 
 ```bash
-# For windows
+# For Windows
 $ npm run build:win
 
 # For macOS
