@@ -44,12 +44,12 @@ function createMainWindow(): BrowserWindow {
 
   // HMR for renderer base on electron-vite cli.
   // Load the remote URL for development or the local html file for production.
-  const router = '/AudioPlayer';
-  if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
-    mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'] + router);
-  } else {
-    mainWindow.loadFile(join(__dirname, '../renderer/index.html' + router));
-  }
+  const router = '#/AudioPlayer';
+  const url = (is.dev && process.env['ELECTRON_RENDERER_URL'])
+    ? process.env['ELECTRON_RENDERER_URL'] + router
+    : `file://${join(__dirname, '../renderer/index.html')}${router}`;
+
+  mainWindow.loadURL(url);
 
   return mainWindow;
 }
@@ -80,12 +80,12 @@ function createSettingWindow(): BrowserWindow {
 
   // HMR for renderer base on electron-vite cli.
   // Load the remote URL for development or the local html file for production.
-  const router = '/Settings';
-  if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
-    settingWindow.loadURL(process.env['ELECTRON_RENDERER_URL'] + router);
-  } else {
-    settingWindow.loadFile(join(__dirname, '../renderer/index.html' + router));
-  }
+  const router = '#/Settings';
+  const url = (is.dev && process.env['ELECTRON_RENDERER_URL'])
+    ? process.env['ELECTRON_RENDERER_URL'] + router
+    : `file://${join(__dirname, '../renderer/index.html')}${router}`;
+
+  settingWindow.loadURL(url);
 
   return settingWindow;
 }
