@@ -6,7 +6,7 @@
 <br/>
 
 <div align="center">
-  <img alt="light-music logo" src=".github/assets/light-music.svg" height="150px" width="150px" />
+  <img alt="LightMusic logo" src=".github/assets/light-music.svg" height="150px" width="150px" />
 </div>
 
 <div align="center">
@@ -16,9 +16,9 @@
 <p align="center">一个跨平台极简主义音乐播放器</p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/v/release/jinsuichen/light-music" alt="release" />
+  <img src="https://img.shields.io/github/v/release/jinsuichen/LightMusic" alt="release" />
   <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey" alt="platform" />
-  <img src="https://img.shields.io/github/license/jinsuichen/light-music?color=blue" alt="license" />
+  <img src="https://img.shields.io/github/license/jinsuichen/LightMusic?color=blue" alt="license" />
 </p>
 
 <br/>
@@ -38,7 +38,7 @@
 ## Clone 这个仓库
 
 ```bash
-$ git clone https://github.com/jinsuichen/light-music.git
+$ git clone https://github.com/jinsuichen/LightMusic.git
 ```
 
 ## 安装依赖包
