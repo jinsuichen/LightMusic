@@ -1,6 +1,6 @@
 {
   "name": "light-music",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A cross-platform minimalist style music player",
   "main": "./out/main/index.js",
   "author": "jinsuichen <ischenjinsui@gmail.com>",
